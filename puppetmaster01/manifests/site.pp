@@ -11,8 +11,7 @@ node /^puppet/ {
     stage => 'main',
   }
 
-  class{'webserver':
-    stage => 'last',
-  }
-
+  # class{'webserver':
+  #   stage => 'last',
+  # }
 }

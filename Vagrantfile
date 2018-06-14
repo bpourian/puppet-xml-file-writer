@@ -8,9 +8,9 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
 
-  config.vm.define "puppetmaster" do |puppetmaster|
+  config.vm.define "puppetmaster01" do |puppetmaster|
 
-    puppetmaster.vm.hostname = "puppet"
+    puppetmaster.vm.hostname = "puppetmaster01"
     puppetmaster.vm.network "private_network", ip: $puppet_ip
 
     puppetmaster.vm.provider "vmware_fusion" do |v|
@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
     puppetmaster.vm.provision "shell", inline: "apt-get update"
 
     puppetmaster.vm.provision "puppet" do |puppet|
-      puppet.manifests_path = "puppetmaster/manifests"
-      puppet.module_path    = "puppetmaster/modules"
+      puppet.manifests_path = "puppetmaster01/manifests"
+      puppet.module_path    = "puppetmaster01/modules"
       puppet.manifest_file  = "site.pp"
     end
   end
